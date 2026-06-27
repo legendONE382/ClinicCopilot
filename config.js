@@ -22,7 +22,15 @@ window.CLINIC_CONFIG = {
         ],
         appointmentProcess: 'Book appointments by calling our phone number, visiting our website, or clicking the Book Appointment button below.',
         emergencyNote: 'For emergencies or personal medical concerns, please contact a healthcare professional immediately.'
-    }
+    },
+    QUICK_QUESTIONS: [
+        'What are your opening hours?',
+        'Where are you located?',
+        'What services do you offer?',
+        'How do I book an appointment?',
+        'Do you accept insurance?',
+        'Which doctors are available?'
+    ]
 };
 
 window.SYSTEM_PROMPT = `You are a friendly AI receptionist for ${window.CLINIC_CONFIG.CLINIC_INFO.name}. 

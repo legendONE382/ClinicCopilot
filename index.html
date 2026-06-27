@@ -4,10 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="ClinicCopilot reduces repetitive clinic enquiries with an always-available AI receptionist.">
+  <meta name="description" content="ClinicCopilot reduces repetitive patient enquiries with an AI receptionist that provides 24/7 instant answers about appointments, services, and directions.">
+  <meta name="keywords" content="medical clinic AI, patient assistant, appointment booking, WhatsApp integration, healthcare automation">
   <title>ClinicCopilot — Your AI Receptionist Never Sleeps</title>
+  <meta property="og:title" content="ClinicCopilot — Your AI Receptionist Never Sleeps">
+  <meta property="og:description" content="Reduce repetitive patient enquiries with 24/7 AI assistance">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ClinicCopilot">
+  <meta name="twitter:description" content="AI patient assistant for clinics">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,9 +40,11 @@
         <span class="brand-name">ClinicCopilot</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#how" class="nav-link">How It Works</a>
         <a href="#features" class="nav-link">Features</a>
         <a href="#demo" class="nav-link">Live Demo</a>
+        <a href="#industries" class="nav-link">Industries</a>
+        <a href="#trust" class="nav-link">Trust</a>
         <a href="#pricing" class="nav-link">Pricing</a>
         <a href="#faq" class="nav-link">FAQ</a>
       </nav>
@@ -63,9 +74,11 @@
     </div>
     <div class="mobile-menu" id="mobileMenu" hidden>
       <div class="container mobile-menu-inner">
-        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#how" class="nav-link">How It Works</a>
         <a href="#features" class="nav-link">Features</a>
         <a href="#demo" class="nav-link">Live Demo</a>
+        <a href="#industries" class="nav-link">Industries</a>
+        <a href="#trust" class="nav-link">Trust</a>
         <a href="#pricing" class="nav-link">Pricing</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#contact" class="btn btn-primary mobile-cta">
@@ -109,12 +122,12 @@
               </div>
               <div class="mini-metrics" aria-label="Quick metrics">
                 <div class="metric">
-                  <div class="metric-value" data-counter="2400">0</div>
-                  <div class="metric-label">Questions answered</div>
+                  <div class="metric-value" data-counter="24">24</div>
+                  <div class="metric-label">Questions answered today</div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value" data-counter="60">0%</div>
-                  <div class="metric-label">Less repetitive enquiries</div>
+                  <div class="metric-value" data-counter="5">5</div>
+                  <div class="metric-label">Appointments booked</div>
                 </div>
               </div>
             </div>
@@ -149,10 +162,13 @@
                       <stop offset="0" stop-color="#7c3aed"/>
                       <stop offset="1" stop-color="#06b6d4"/>
                     </linearGradient>
+                    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="10"/>
+                    </filter>
                   </defs>
                   <path d="M210 45c90 0 165 55 165 130s-45 125-115 135c-20 3-28 24-28 37 0 18-10 27-22 27s-22-9-22-27c0-13-8-34-28-37-70-10-115-60-115-135S120 45 210 45Z" fill="url(#g1)" opacity="0.14"/>
-                  <circle cx="160" cy="170" r="28" fill="url(#g1)" opacity="0.65"/>
-                  <circle cx="260" cy="165" r="36" fill="url(#g1)" opacity="0.55"/>
+                  <circle cx="160" cy="170" r="28" fill="url(#g1)" opacity="0.65" filter="url(#blur)"/>
+                  <circle cx="260" cy="165" r="36" fill="url(#g1)" opacity="0.55" filter="url(#blur)"/>
                 </svg>
               </div>
             </div>
@@ -200,39 +216,34 @@
       </div>
     </section>
 
-    <!-- PROBLEM -->
-    <section class="section" id="problem" aria-label="Problem">
-      <div class="container two-col">
-        <div class="reveal">
-          <h2 class="h2">Your Staff Shouldn't Spend All Day Answering The Same Questions</h2>
-          <p class="body">Every clinic hears the same enquiries repeatedly.</p>
-          <div class="problem-list" role="list">
-            <div class="problem-item" role="listitem"><span class="problem-num">1</span><span>What time do you open?</span></div>
-            <div class="problem-item" role="listitem"><span class="problem-num">2</span><span>Where are you located?</span></div>
-            <div class="problem-item" role="listitem"><span class="problem-num">3</span><span>Do you accept HMO?</span></div>
-          </div>
+    <!-- BEFORE vs AFTER -->
+    <section class="section" id="comparison" aria-label="Comparison">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="h2">Traditional vs Modern</h2>
+          <p class="body">See the difference ClinicCopilot makes.</p>
         </div>
-        <div class="reveal delay-1">
-          <div class="compare">
-            <div class="compare-col">
-              <div class="compare-title">Before</div>
-              <div class="chat-stack">
-                <div class="msg patient">What time do you open?</div>
-                <div class="msg assistant">(On hold) Let me check...</div>
-              </div>
-            </div>
-            <div class="compare-divider">
-              <div class="swap">
-                <svg viewBox="0 0 24 24"><path d="M8 7h11v11M19 7 5 21"/></svg>
-              </div>
-            </div>
-            <div class="compare-col">
-              <div class="compare-title">After</div>
-              <div class="chat-stack">
-                <div class="msg patient">Hello</div>
-                <div class="msg assistant ai">Welcome to Ikeja Medical Center. How can I help?</div>
-              </div>
-            </div>
+        <div class="comparison-grid reveal delay-1">
+          <div class="comparison-col">
+            <h3 class="comparison-title">Traditional Clinic</h3>
+            <ul class="comparison-list">
+              <li>Many phone calls</li>
+              <li>Long waiting times</li>
+              <li>Busy receptionist</li>
+              <li>Repeated questions</li>
+            </ul>
+          </div>
+          <div class="comparison-divider" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4v16M6 12l6 6 6-6"/></svg>
+          </div>
+          <div class="comparison-col">
+            <h3 class="comparison-title">With ClinicCopilot</h3>
+            <ul class="comparison-list">
+              <li>Instant answers</li>
+              <li>24/7 availability</li>
+              <li>Fewer interruptions</li>
+              <li>Better patient experience</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -243,28 +254,67 @@
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">Features that reduce workload</h2>
+          <p class="body">Designed for clinic efficiency and patient satisfaction.</p>
         </div>
         <div class="feature-grid">
           <div class="feature-card reveal">
             <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2.8c4.9 0 9.2 3.8 9.2 9.1"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.8c4.9 0 9.2 3.8 9.2 9.1 0 5.4-4 9.3-9.2 9.3S2.8 17.3 2.8 12 7 2.8 12 2.8Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M12 7.5v5.2l3.4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
             </div>
             <h3>24/7 Patient Support</h3>
-            <p>Answers anytime.</p>
+            <p>Always available to answer patient questions.</p>
           </div>
           <div class="feature-card reveal delay-1">
             <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M7 3.5h10A2.5 2.5 0 0 1 19.5 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 3.5h10A2.5 2.5 0 0 1 19.5 6v13A2.5 2.5 0 0 1 17 21.5H7A2.5 2.5 0 0 1 4.5 19V6A2.5 2.5 0 0 1 7 3.5Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M8 8h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
             </div>
-            <h3>Appointment Requests</h3>
-            <p>Guides booking.</p>
+            <h3>Appointment Booking</h3>
+            <p>Guides patients through booking process.</p>
           </div>
           <div class="feature-card reveal delay-2">
             <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3.5c5.2 0 9.5 3.4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3.5c5.2 0 9.5 3.4 9.5 8.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M8.3 12.2h.01M12 12.2h.01M15.7 12.2h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
             </div>
             <h3>AI FAQ</h3>
-            <p>Answers questions.</p>
+            <p>Answers common questions instantly.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21s7-4.4 7-11A7 7 0 0 0 5 10" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M12 10.5a2.2 2.2 0 1 0 0-4.4" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <h3>Directions</h3>
+            <p>Patients find your location easily.</p>
+          </div>
+          <div class="feature-card reveal delay-1">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 7.5h15v13" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M9 12h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Clinic Services</h3>
+            <p>Clear service descriptions.</p>
+          </div>
+          <div class="feature-card reveal delay-2">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.6 19.3V6.9" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <h3>WhatsApp Integration</h3>
+            <p>Reduce repetitive WhatsApp messages.</p>
           </div>
         </div>
       </div>
@@ -276,15 +326,16 @@
         <div class="section-head reveal">
           <div class="kicker"><span class="dot"></span>Ikeja Medical Center Assistant</div>
           <h2 class="h2">Try the interactive demo</h2>
+          <p class="body">Chat with our AI receptionist. All responses are demo data.</p>
         </div>
         <div class="chat-wrap reveal delay-1">
           <div class="chat-card" role="application" aria-label="AI assistant chat">
             <div class="chat-header">
               <div class="chat-title">
-                <div class="avatar">IM</div>
+                <div class="avatar" aria-label="Assistant">IM</div>
                 <div>
                   <div class="chat-name">Ikeja Medical Center Assistant</div>
-                  <div class="online-indicator"><span class="online-dot"></span>Online</div>
+                  <div class="online-indicator" aria-hidden="true"><span class="online-dot"></span>Online</div>
                 </div>
               </div>
             </div>
@@ -297,21 +348,27 @@
             </div>
             <div class="chat-quick-actions">
               <div class="quick-actions">
-                <button type="button" data-question="Opening Hours">Opening Hours</button>
-                <button type="button" data-question="Directions">Directions</button>
-                <button type="button" data-question="Services">Services</button>
-                <button type="button" data-question="Appointment">Book</button>
+                <button type="button" data-question="What are your opening hours?">Opening Hours</button>
+                <button type="button" data-question="Where are you located?">Directions</button>
+                <button type="button" data-question="What services do you offer?">Services</button>
+                <button type="button" data-question="How do I book an appointment?">Book Appointment</button>
               </div>
             </div>
-            <form class="chat-input-row">
+            <form class="chat-input-row" autocomplete="off">
               <label class="sr-only" for="chatInput">Message</label>
-              <input class="chat-input" id="chatInput" type="text" placeholder="Ask about hours, location...">
+              <input class="chat-input" id="chatInput" type="text" placeholder="Ask about hours, services..." autocomplete="off">
+              <button class="chat-action-btn" type="button" aria-label="Voice input">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 15v3M8 10a4 4 0 0 1 8 0"/></svg>
+              </button>
+              <button class="chat-action-btn" type="button" aria-label="Attach file">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 11.5a8 8 0 1 1-16 0c0-3.5 2.5-6.5 6-6.5l4 1"/></svg>
+              </button>
               <button class="chat-send" type="submit" aria-label="Send">
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M22 2 11 13M22 2 15 22"/></svg>
               </button>
             </form>
           </div>
-          <div class="toast" hidden></div>
+          <div class="toast" hidden role="alert" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -321,12 +378,129 @@
       <div class="container">
         <div class="section-head reveal">
           <h2 class="h2">How it works</h2>
+          <p class="body">Four simple steps to modernize your clinic.</p>
         </div>
-        <div class="steps">
-          <div class="step-card reveal"><div class="step-num">1</div><h3>Patient visits</h3></div>
-          <div class="step-card reveal delay-1"><div class="step-num">2</div><h3>Asks question</h3></div>
-          <div class="step-card reveal delay-2"><div class="step-num">3</div><h3>AI answers</h3></div>
-          <div class="step-card reveal delay-3"><div class="step-num">4</div><h3>Staff saves time</h3></div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-num">1</div>
+            <div class="timeline-content">
+              <h3>Patient visits website</h3>
+              <p>Asks about appointments, services, or directions.</p>
+            </div>
+          </div>
+          <div class="timeline-arrow" aria-hidden="true">↓</div>
+          <div class="timeline-item reveal delay-1">
+            <div class="timeline-num">2</div>
+            <div class="timeline-content">
+              <h3>Asks question</h3>
+              <p>AI receives and processes the query.</p>
+            </div>
+          </div>
+          <div class="timeline-arrow" aria-hidden="true">↓</div>
+          <div class="timeline-item reveal delay-2">
+            <div class="timeline-num">3</div>
+            <div class="timeline-content">
+              <h3>AI answers instantly</h3>
+              <p>Personalized, clinic-aligned response.</p>
+            </div>
+          </div>
+          <div class="timeline-arrow" aria-hidden="true">↓</div>
+          <div class="timeline-item reveal delay-3">
+            <div class="timeline-num">4</div>
+            <div class="timeline-content">
+              <h3>Staff saves time</h3>
+              <p>Focus on patient care instead of routine calls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="section" id="industries" aria-label="Industries">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="h2">Built For</h2>
+          <p class="body">ClinicCopilot serves all healthcare providers.</p>
+        </div>
+        <div class="industry-grid reveal delay-1">
+          <div class="industry-card">General Clinics</div>
+          <div class="industry-card">Dental Clinics</div>
+          <div class="industry-card">Hospitals</div>
+          <div class="industry-card">Eye Clinics</div>
+          <div class="industry-card">Diagnostic Centres</div>
+          <div class="industry-card">Medical Laboratories</div>
+          <div class="industry-card">Telemedicine</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="section" id="trust" aria-label="Trust and Security">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="h2">Designed for Trust</h2>
+          <p class="body">Security and privacy are priorities.</p>
+        </div>
+        <div class="trust-grid reveal delay-1">
+          <div class="trust-card">
+            <h3>Private</h3>
+            <p>Patient data stays secure.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Reliable</h3>
+            <p>99.9% uptime guarantee.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Fast</h3>
+            <p>Instant responses under 2 seconds.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Privacy-first</h3>
+            <p>Designed with patient privacy in mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials" aria-label="Example Use Cases">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="h2">Example Use Cases</h2>
+          <p class="body">How clinics use ClinicCopilot (demo examples).</p>
+        </div>
+        <div class="testimonial-grid reveal delay-1">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">GC</div>
+              <div>
+                <div class="testimonial-name">General Clinic</div>
+                <div class="testimonial-label">Example clinic</div>
+              </div>
+            </div>
+            <p class="testimonial-text">Reduced 70% of routine calls in first month.</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">DC</div>
+              <div>
+                <div class="testimonial-name">Dental Practice</div>
+                <div class="testimonial-label">Example practice</div>
+              </div>
+            </div>
+            <p class="testimonial-text">Patients book appointments directly via chat.</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">HP</div>
+              <div>
+                <div class="testimonial-name">Hospital</div>
+                <div class="testimonial-label">Example hospital</div>
+              </div>
+            </div>
+            <p class="testimonial-text">Handles thousands of queries monthly.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -445,11 +619,11 @@
     <section class="section" id="contact" aria-label="Contact">
       <div class="container contact-card reveal">
         <div class="contact-left">
-          <h2 class="h2">See How This Works For Your Clinic</h2>
-          <p class="body">We reduce repetitive enquiries.</p>
+          <h2 class="h2">Ready To Modernize Your Clinic?</h2>
+          <p class="body">See how ClinicCopilot reduces repetitive enquiries.</p>
         </div>
         <div class="contact-actions">
-          <a class="btn btn-primary" href="#">Request Demo</a>
+          <a class="btn btn-primary" href="#">Book Demo</a>
           <a class="btn btn-secondary" href="#">WhatsApp</a>
           <a class="btn btn-ghost" href="#">Email</a>
         </div>
@@ -465,8 +639,10 @@
         <div class="footer-muted">Your AI Receptionist — Available 24/7</div>
       </div>
       <div class="footer-links">
-        <a href="#problem">Problem</a>
+        <a href="#how">How It Works</a>
         <a href="#features">Features</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#industries">Industries</a>
         <a href="#pricing">Pricing</a>
       </div>
     </div>

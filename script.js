@@ -92,7 +92,6 @@ function initMobileMenu() {
     setOpen(!open);
   });
 
-  // close on link click
   $$('#mobileMenu a[href^="#"]').forEach((a) => {
     a.addEventListener('click', () => setOpen(false));
   });
@@ -110,12 +109,10 @@ function initRipples() {
     const ripple = btn.querySelector('.btn-ripple');
     if (!ripple) return;
 
-    // restart animation
     ripple.style.animation = 'none';
     ripple.getBoundingClientRect();
     ripple.style.animation = '';
 
-    // also add/remove a transient class for CSS-driven micro interaction
     btn.classList.remove('ripple-armed');
     void btn.offsetWidth;
     btn.classList.add('ripple-armed');
@@ -161,7 +158,6 @@ function initCounters() {
 
     const step = (t) => {
       const p = Math.min(1, (t - start) / duration);
-      // easeOutCubic
       const eased = 1 - Math.pow(1 - p, 3);
       const value = from + (num - from) * eased;
       if (isPercent) el.textContent = `${Math.round(value)}${unit}`;
@@ -192,7 +188,6 @@ function initAccordion() {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
 
-      // collapse all
       for (const other of items) {
         const obtn = $('.accordion-btn', other);
         const opanel = $('.accordion-panel', other);
@@ -221,8 +216,6 @@ function createMessage(role, content, { isStreaming = false } = {}) {
   text.className = 'bubble-text';
 
   if (isStreaming) text.classList.add('streaming');
-
-  // Sanitize minimal: textContent for now
   text.textContent = content || '';
 
   bubble.appendChild(text);
@@ -230,7 +223,6 @@ function createMessage(role, content, { isStreaming = false } = {}) {
   return { wrapper, textEl: text };
 }
 
-// Chat demo - handles both real API and simulated mode
 function initChat() {
   const chatRoot = $('#demo');
   if (!chatRoot) return;
@@ -248,7 +240,6 @@ function initChat() {
   const reduce = prefersReducedMotion();
   const hasApiKey = CONFIG.MISTRAL_API_KEY && CONFIG.MISTRAL_API_KEY !== 'YOUR_MISTRAL_API_KEY_HERE';
 
-  // Seed assistant introduction once
   const initialAssistant = 'Welcome to Ikeja Medical Center. How can I help you today?';
   const bot = createMessage('assistant', initialAssistant);
   convoEl.appendChild(bot.wrapper);
@@ -266,11 +257,10 @@ function initChat() {
 
   setOnline(true);
 
-  // Simulated clinic knowledge base responses
   function getSimulatedResponse(userText) {
     const txt = userText.toLowerCase();
     const ci = CONFIG.CLINIC_INFO || {};
-    
+
     if (txt.includes('open') || txt.includes('hour')) {
       return `We're open ${ci.openingHours || 'Monday to Saturday from 8AM to 6PM'}.`;
     }
@@ -281,23 +271,22 @@ function initChat() {
       return 'Yes. Tap Book Appointment below to get started.';
     }
     if (txt.includes('service') || txt.includes('offer')) {
-      return `We offer: ${ci.services ? ci.services.join(', ') : 'general consultation, pediatrics, dermatology, and more'}.`;
+      return `We offer: ${ci.services ? ci.services.join(', ') : 'general consultation and more'}.`;
     }
     if (txt.includes('doctor') || txt.includes('physician')) {
-      return 'We have qualified doctors available. Which specialty are you interested in?';
+      return 'We have qualified doctors available.';
     }
     if (txt.includes('insurance') || txt.includes('hmo')) {
-      return 'We work with major insurance providers. Please contact the clinic to confirm your specific coverage.';
+      return 'We work with major insurance providers. Please contact us to confirm coverage.';
     }
     if (txt.includes('emergency') || txt.includes('urgent')) {
-      return ci.emergencyNote || 'For emergencies, please contact a healthcare professional immediately.';
+      return ci.emergencyNote || 'Please contact a healthcare professional immediately.';
     }
-    return "I'm here to help with clinic-related questions. Try asking about hours, location, services, or appointments.";
+    return "I'm here to help with clinic-related questions. Try asking about hours, location, or services.";
   }
 
   async function callMistral(userText) {
     if (!hasApiKey) {
-      // Simulated mode
       await new Promise(r => setTimeout(r, 600 + Math.random() * 400));
       return getSimulatedResponse(userText);
     }
@@ -325,12 +314,12 @@ function initChat() {
 
     if (!res.ok) {
       const txt = await res.text().catch(() => '');
-      throw new Error(`Mistral API error ${res.status}: ${txt || res.statusText}`);
+      throw new Error(`API error ${res.status}`);
     }
 
     const data = await res.json();
     const assistant = data?.choices?.[0]?.message?.content;
-    if (!assistant) throw new Error('No assistant content returned from API.');
+    if (!assistant) throw new Error('No response');
     return String(assistant).trim();
   }
 
@@ -350,8 +339,6 @@ function initChat() {
     convoEl.appendChild(streaming.wrapper);
 
     setTyping(true);
-    setOnline(true);
-
     convoEl.scrollTop = convoEl.scrollHeight;
 
     try {
@@ -369,18 +356,10 @@ function initChat() {
       else convoEl.scrollTop = convoEl.scrollHeight;
     } catch (err) {
       setTyping(false);
-
-      const friendly = 'Sorry—something went wrong. Please try again or contact the clinic directly.';
+      const friendly = 'Sorry—something went wrong. Please try again.';
       streaming.textEl.classList.remove('streaming');
       streaming.textEl.textContent = friendly;
       messages.push({ role: 'assistant', content: friendly });
-
-      const toast = $('.toast', chatRoot);
-      if (toast) {
-        toast.textContent = err?.message || err;
-        toast.hidden = false;
-        setTimeout(() => (toast.hidden = true), 4500);
-      }
     }
   }
 
@@ -401,7 +380,6 @@ function initChat() {
   }
 }
 
-// -------------------- Init --------------------
 function init() {
   initTheme();
   initSmoothAnchors();
