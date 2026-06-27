@@ -1029,6 +1029,21 @@ h1,h2,h3{margin:0}
   color:var(--muted);
   cursor:pointer;
 }
+.chat-extra-actions{
+  padding:12px 14px; display:flex; gap:8px;
+}
+.chat-extra-btn{
+  width:36px; height:36px; border-radius:10px;
+  display:grid; place-items:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+  color:var(--muted);
+  cursor:pointer; transition:all .14s ease;
+}
+.chat-extra-btn:hover{
+  background:rgba(255,255,255,.1);
+  color:var(--text);
+}
 
 /* Benefits section */
 .benefits-grid{
