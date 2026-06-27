@@ -3,7 +3,7 @@
 // This file is loaded as a regular script (not ES module) for static hosting compatibility
 
 window.CLINIC_CONFIG = {
-    MISTRAL_API_KEY: 'YOUR_MISTRAL_API_KEY_HERE',
+    MISTRAL_API_KEY: 'VFzQK2JhLym0LVGgcKQzERdOBZHuu5BZ',
     MISTRAL_API_URL: 'https://api.mistral.ai/v1/chat/completions',
     CLINIC_INFO: {
         name: 'Ikeja Medical Center',
