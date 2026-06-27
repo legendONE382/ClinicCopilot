@@ -215,7 +215,12 @@ function createMessage(role, content, { isStreaming = false } = {}) {
   const text = document.createElement('div');
   text.className = 'bubble-text';
 
-  if (isStreaming) text.classList.add('streaming');
+  if (isStreaming) {
+    text.classList.add('streaming');
+  } else {
+    wrapper.classList.add('jump');
+  }
+
   text.textContent = content || '';
 
   bubble.appendChild(text);
@@ -240,8 +245,8 @@ function initChat() {
   const reduce = prefersReducedMotion();
   const hasApiKey = CONFIG.MISTRAL_API_KEY && CONFIG.MISTRAL_API_KEY !== 'YOUR_MISTRAL_API_KEY_HERE';
 
-  const initialAssistant = 'Welcome to Ikeja Medical Center. How can I help you today?';
-  const bot = createMessage('assistant', initialAssistant);
+  const welcomeMsg = 'Welcome to Ikeja Medical Center. How can I help you today?';
+  const bot = createMessage('assistant', welcomeMsg);
   convoEl.appendChild(bot.wrapper);
 
   function setTyping(on) {
@@ -331,7 +336,6 @@ function initChat() {
     inputEl.blur();
 
     messages.push({ role: 'user', content: clean });
-
     const u = createMessage('user', clean);
     convoEl.appendChild(u.wrapper);
 
@@ -346,6 +350,7 @@ function initChat() {
 
       streaming.textEl.classList.remove('streaming');
       streaming.textEl.textContent = reply;
+      streaming.wrapper.classList.add('jump');
 
       messages.push({ role: 'assistant', content: reply });
       setTyping(false);
@@ -360,6 +365,7 @@ function initChat() {
       streaming.textEl.classList.remove('streaming');
       streaming.textEl.textContent = friendly;
       messages.push({ role: 'assistant', content: friendly });
+      streaming.wrapper.classList.add('jump');
     }
   }
 
