@@ -24,7 +24,7 @@
   --focus: 0 0 0 4px rgba(124,58,237,.25);
   --grid: rgba(255,255,255,.05);
 
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
 
   --header-h: 74px;
 }
@@ -147,6 +147,20 @@ h1,h2,h3{margin:0}
 }
 .icon-btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(124,58,237,.35)}
 .icon-btn:focus{outline:none; box-shadow: var(--focus)}
+
+/* Theme toggle icons */
+.icon-btn .icon{position:relative; width:20px; height:20px; display:block}
+.icon-btn .icon svg{
+  position:absolute; inset:0; width:20px; height:20px;
+  color:var(--text);
+  transition:opacity .2s ease, transform .25s ease;
+}
+/* Dark theme (default): show sun (switch to light), hide moon */
+#iconMoon{opacity:0; transform:rotate(-90deg) scale(.6)}
+#iconSun{opacity:1; transform:rotate(0) scale(1)}
+/* Light theme: show moon (switch to dark), hide sun */
+[data-theme="light"] #iconSun{opacity:0; transform:rotate(90deg) scale(.6)}
+[data-theme="light"] #iconMoon{opacity:1; transform:rotate(0) scale(1)}
 
 /* Buttons */
 .btn{
@@ -273,40 +287,48 @@ h1,h2,h3{margin:0}
 .metric-value{font-size:22px; font-weight:700; color:var(--text)}
 .metric-label{font-size:11px; color:var(--muted2)}
 
-/* Dashboard elements */
-.dashboard{position:relative; height:280px; overflow:hidden}
-.dash-sidebar{
-  position:absolute; left:0; top:0; bottom:0; width:52px;
-  background:rgba(255,255,255,.04);
-  border-right:1px solid var(--border);
+/* Hero chat preview */
+.hero-chat{
+  display:flex; flex-direction:column; gap:14px;
+  padding:24px;
 }
-.dash-main{position:absolute; left:52px; right:0; top:0; bottom:0; padding:16px}
-.dash-row{display:flex; gap:12px; margin-bottom:12px}
-.dash-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-.dash-block.wide{grid-column:1 / -1}
-.skeleton{
-  background:linear-gradient(90deg, rgba(255,255,255,.12) 25%, rgba(255,255,255,.06) 50%, rgba(255,255,255,.12) 75%);
-  background-size:200% 100%;
-  border-radius:8px;
-  animation:skeleton 1.6s ease-in-out infinite;
+.hc-msg{display:flex; align-items:flex-end; gap:10px; max-width:88%}
+.hc-msg--in{align-self:flex-start; animation:hcIn .5s ease both}
+.hc-msg--out{align-self:flex-end; flex-direction:row-reverse; animation:hcIn .5s ease both}
+.hc-msg--in:nth-child(2){animation-delay:.15s}
+.hc-msg--out:nth-child(2){animation-delay:.3s}
+.hc-msg--in:nth-child(3){animation-delay:.45s}
+.hc-msg--out:nth-child(4){animation-delay:.6s}
+@keyframes hcIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+.hc-avatar{
+  flex-shrink:0;
+  width:30px; height:30px; border-radius:50%;
+  background:linear-gradient(135deg, var(--primary), var(--accent));
+  display:grid; place-items:center;
+  font-size:11px; font-weight:600; color:#fff;
 }
-.skeleton-lg{height:18px; width:100%}
-.skeleton-sm{height:18px; width:60px}
-.skeleton-pill{height:10px; width:48px; border-radius:999px; margin-bottom:8px}
-.skeleton-line{height:12px; width:100%; margin-bottom:6px}
-.skeleton-line.short{width:70%}
-.skeleton-chart{height:60px; width:100%; border-radius:12px}
-@keyframes skeleton{
-  0%{background-position:200% 0}
-  100%{background-position:-200% 0}
+.hc-bubble{
+  padding:11px 15px; border-radius:16px;
+  font-size:13.5px; line-height:1.5;
 }
-
-/* Float illustration */
-.float-illustration{
-  position:absolute; top:50%; right:-10px; transform:translateY(-50%);
-  width:340px; height:340px; pointer-events:none;
-  opacity:.9
+.hc-msg--in .hc-bubble{
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-bottom-left-radius:5px;
 }
+.hc-msg--out .hc-bubble{
+  background:linear-gradient(135deg, var(--primary), var(--accent));
+  color:#fff;
+  border-bottom-right-radius:5px;
+}
+.hc-typing{display:inline-flex; gap:4px; align-items:center; padding:2px 0}
+.hc-typing span{
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,.85);
+  animation:typingBounce .8s infinite ease-in-out;
+}
+.hc-typing span:nth-child(2){animation-delay:.12s}
+.hc-typing span:nth-child(3){animation-delay:.24s}
 
 /* Status indicator */
 .status-indicator{display:flex; align-items:center; gap:6px}
@@ -328,12 +350,19 @@ h1,h2,h3{margin:0}
   gap:14px;
 }
 .proof-card{
-  padding:20px; border-radius:var(--radius-md);
+  padding:24px 20px; border-radius:var(--radius-md);
   background:var(--card);
   border:1px solid var(--border);
   backdrop-filter:blur(10px);
   text-align:center;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
+.proof-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow2);
+  border-color:rgba(124,58,237,.3);
+}
+.proof-card h3{font-size:15px; font-weight:600}
 .proof-icon{
   width:44px; height:44px; margin:0 auto 12px;
   display:grid; place-items:center;
@@ -1006,10 +1035,16 @@ h1,h2,h3{margin:0}
   gap:12px; max-width:800px; margin:0 auto;
 }
 .industry-card{
-  padding:16px; border-radius:var(--radius-md);
+  padding:18px 16px; border-radius:var(--radius-md);
   background:rgba(255,255,255,.04);
   border:1px solid var(--border);
-  text-align:center; font-size:14px;
+  text-align:center; font-size:14px; font-weight:500;
+  transition:transform .16s ease, background .16s ease, border-color .16s ease;
+}
+.industry-card:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.07);
+  border-color:rgba(124,58,237,.3);
 }
 
 /* Trust section */
@@ -1018,11 +1053,19 @@ h1,h2,h3{margin:0}
   gap:16px; max-width:800px; margin:0 auto;
 }
 .trust-card{
-  padding:20px; border-radius:var(--radius-md);
+  padding:24px 20px; border-radius:var(--radius-md);
   background:rgba(255,255,255,.04);
   border:1px solid var(--border);
   text-align:center;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
+.trust-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow2);
+  border-color:rgba(124,58,237,.3);
+}
+.trust-card h3{font-size:16px; font-weight:600; margin-bottom:6px}
+.trust-card p{font-size:13.5px; color:var(--muted)}
 
 /* Testimonials */
 .testimonial-grid{
