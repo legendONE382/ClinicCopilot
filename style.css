@@ -708,6 +708,11 @@ h1,h2,h3{margin:0}
   display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
   gap:20px; margin-top:36px;
 }
+.pricing-grid--two{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  max-width:760px; margin-left:auto; margin-right:auto;
+}
+@media (max-width: 640px){.pricing-grid--two{grid-template-columns:1fr}}
 .price-card{
   padding:26px; border-radius:var(--radius-lg);
   background:var(--card);
@@ -729,6 +734,8 @@ h1,h2,h3{margin:0}
 .price-top{margin-bottom:18px}
 .price-name{font-size:20px; font-weight:600; margin-bottom:6px}
 .price-tag{font-size:28px; font-weight:700; color:var(--text); margin-bottom:8px}
+.price-cadence{font-size:14px; font-weight:500; color:var(--muted); margin-left:2px}
+.price-sub{font-size:13.5px; color:var(--muted); margin-top:6px}
 .price-desc{font-size:13px; color:var(--muted)}
 .price-list{
   margin:0 0 18px; padding:0; list-style:none;
